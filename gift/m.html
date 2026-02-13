@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Only For You ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family:Segoe UI;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    width:420px;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,0.35);
+    animation:fade 1.5s ease;
+}
+
+h2{
+    color:#ff2e63;
+    margin-bottom:15px;
+}
+
+button{
+    margin:10px;
+    padding:12px 22px;
+    font-size:16px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    background:#ff2e63;
+    color:white;
+    transition:0.25s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#e61b50;
+}
+
+#no{
+    position:relative;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-10vh); opacity:0;}
+}
+
+@keyframes fade{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2 id="question">Ready for a small surprise? 💌</h2>
+
+<div id="buttons">
+<button onclick="next()">Start ❤️</button>
+</div>
+
+</div>
+
+<script>
+
+let step=0;
+
+function next(){
+
+step++;
+
+if(step==1){
+document.getElementById("question").innerHTML=
+"Do you remember the day we first met? 😊";
+
+document.getElementById("buttons").innerHTML=
+'<button onclick="next()">Of course ❤️</button>';
+}
+
+else if(step==2){
+document.getElementById("question").innerHTML=
+"Did I make your life a little happier? 🌸";
+
+document.getElementById("buttons").innerHTML=
+'<button onclick="next()">Yes you did 💖</button>';
+}
+
+else if(step==3){
+document.getElementById("question").innerHTML=
+"Do my texts make you smile sometimes? 📱✨";
+
+document.getElementById("buttons").innerHTML=
+'<button onclick="next()">Always 😚</button>';
+}
+
+else if(step==4){
+document.getElementById("question").innerHTML=
+"Do you feel safe and comfortable with me? 🫶";
+
+document.getElementById("buttons").innerHTML=
+'<button onclick="next()">Yes 🥺</button>';
+}
+
+else if(step==5){
+document.getElementById("question").innerHTML=
+"Then I want to ask you something important...";
+
+document.getElementById("buttons").innerHTML=
+'<button onclick="next()">What? 👀</button>';
+}
+
+else if(step==6){
+document.getElementById("question").innerHTML=
+"Will you stay with me and make more memories together? 💞";
+
+document.getElementById("buttons").innerHTML=
+'<button onclick="yes()">YES 💍</button> <button id="no" onmouseover="move()">NO 🙈</button>';
+}
+
+}
+
+function yes(){
+document.getElementById("question").innerHTML=
+"I promise to annoy you, care for you, protect you and love you every single day ❤️<br><br>Happy Valentine's Day My Love 💖";
+
+document.getElementById("buttons").innerHTML="";
+hearts();
+}
+
+function move(){
+const btn=document.getElementById("no");
+btn.style.position="absolute";
+btn.style.left=Math.random()*300+"px";
+btn.style.top=Math.random()*300+"px";
+}
+
+/* floating hearts */
+function hearts(){
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},6000);
+},250);
+}
+
+</script>
+
+</body>
+</html>
